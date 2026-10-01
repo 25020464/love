@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the page responsive on phones and computers -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Password Protected Message</title>
+
+    <style>
+        /* General page styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+
+            /* Center everything */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main container */
+        .container {
+            background: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        /* Password input */
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        /* Button */
+        button {
+            padding: 12px 25px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #5568d9;
+        }
+
+        /* Error message */
+        #error {
+            color: red;
+            display: none;
+        }
+
+        /* Hidden message */
+        #secretMessage {
+            display: none;
+        }
+
+        /* Message after successful password */
+        #secretMessage h2 {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Password section -->
+    <div class="container" id="loginBox">
+
+        <h1>🔐 Private Area</h1>
+
+        <p>Please enter the password to continue.</p>
+
+        <!-- Password input -->
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+        >
+
+        <!-- Login button -->
+        <br>
+
+        <button onclick="checkPassword()">
+            Open
+        </button>
+
+        <!-- Error message -->
+        <p id="error">
+            Incorrect password. Please try again.
+        </p>
+    </div>
+
+
+    <!-- Secret message -->
+    <div class="container" id="secretMessage">
+
+        <h1>🎉 Welcome!</h1>
+
+        <h2>Message Unlocked</h2>
+
+        <p>
+            This is your private message.
+        </p>
+
+        <p>
+            Welcome to my protected webpage!
+        </p>
+
+    </div>
+
+
+    <script>
+
+        // Password that must be entered
+        const correctPassword = "12345";
+
+
+        // Function that checks the password
+        function checkPassword() {
+
+            // Get the password entered by the user
+            const enteredPassword =
+                document.getElementById("password").value;
+
+            // Check whether the password is correct
+            if (enteredPassword === correctPassword) {
+
+                // Hide the password box
+                document.getElementById("loginBox").style.display = "none";
+
+                // Show the secret message
+                document.getElementById("secretMessage").style.display = "block";
+
+            } else {
+
+                // Display the error message
+                document.getElementById("error").style.display = "block";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
